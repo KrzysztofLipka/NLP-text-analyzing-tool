@@ -3,10 +3,10 @@ Wykorzystanie w webowym edytorze JavaScript bibliotek programistycznych do przet
 </h2> 
 <p>autor : Krzysztof Lipka</p>
 <p>Uruchamianie pracy:</p>  
-<ul>
-<li>1.Należy uruchomić plik app.py </li>  
-<li>2.Wpisać w pasku adresu http://127.0.0.1:5000/</l1> 
-</ul>
+<ol>
+<li>Należy uruchomić plik app.py </li>  
+<li>Wpisać w pasku adresu http://127.0.0.1:5000/</l1> 
+</ol>
 <h2>Moduły w projekcie:</h2> 
 <ul>
 <li>app.py - moduł zawierajacy kontrolery które odbierają żądania z edytora.
