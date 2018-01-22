@@ -1,11 +1,12 @@
 from flask import Flask, render_template, jsonify, request
 #import app.word_click_models as word_click_models
-from app.word_click_models import click_event_processing, word_to_synonims, text_to_speech_part,search_in_model
-from app.text_update_models import from_draftjs_to_text, classify_text_type, search_ner,text_to_text_count,text_to_ingridients
+
 import os
 import sys
 app = Flask(__name__)
 
+from Django_website.word_click_models import click_event_processing, word_to_synonims, text_to_speech_part,search_in_model
+from Django_website.text_update_models import from_draftjs_to_text, classify_text_type, search_ner,text_to_text_count,text_to_ingridients
 
 @app.route('/updateEditorState')
 def char_searching():

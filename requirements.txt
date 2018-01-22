@@ -1,3 +1,4 @@
+
 boto==2.48.0
 boto3==1.5.15
 botocore==1.8.29
@@ -9,7 +10,7 @@ cymem==1.31.2
 cytoolz==0.8.2
 dill==0.2.7.1
 docutils==0.14
-en-core-web-sm==2.0.0
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz#en_core_web_sm
 Flask==0.12.2
 ftfy==4.4.3
 gensim==3.2.0
