@@ -11,7 +11,8 @@ import re
 from Django_website.settings import APP_STATIC
 
 
-nlp = spacy.load('en')
+import en_core_web_sm
+nlp = en_core_web_sm.load()
 
 
 '''

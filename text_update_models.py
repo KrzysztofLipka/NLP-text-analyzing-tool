@@ -1,6 +1,8 @@
 import spacy
 import nltk
-nlp = spacy.load('en')
+#nlp = spacy.load('en')
+import en_core_web_sm
+nlp = en_core_web_sm.load()
 import json
 from nltk import FreqDist,sent_tokenize, word_tokenize, pos_tag
 import pickle
