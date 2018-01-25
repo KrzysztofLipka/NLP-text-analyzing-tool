@@ -8,7 +8,7 @@ import spacy
 from nltk import sent_tokenize, word_tokenize, pos_tag
 import re
 
-from Django_website.settings import APP_STATIC
+from NLPtool.settings import APP_STATIC
 
 
 import en_core_web_sm

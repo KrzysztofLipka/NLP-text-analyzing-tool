@@ -14,7 +14,7 @@ import re
 import sys
 
 
-from Django_website.settings import APP_STATIC
+from NLPtool.settings import APP_STATIC
 
 os.chdir(APP_STATIC)
 food_set = "food_set.pkl"
