@@ -69,15 +69,23 @@ run app:</br>
 
 </ol>
 
-<h2>Użyte technologie</h2>
-<h3>Biblioteki NLP</h3>
+
+<h3>NLP libraries</h3>
 <ul>
 <li> <a href = "https://legacy.spacy.io/docs/">Spacy wersja</a></li>
 <li> <a href = "http://www.nltk.org/">Nltk</a></li> 
 <li> <a href = "https://radimrehurek.com/gensim/">Gensim</a></li> 
 </ul>
 
+<h3>Files in project</h3>
+<p>...</p>
 
+<h3>Todo:</h3>
+<ol>
+<li>More useful and responsive frontend</li>
+<li>Tool for fining relations between entities in text</li>
+<li>Functions for training new models that can be easy to use and customize</li>
+</ol>
 
 
 
