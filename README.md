@@ -23,53 +23,50 @@ creating virtualenv (virtualenv -p <path to python> virtual)</br>
 
 
 <li>
-Activate virtualenv:
+Activate virtualenv:</br>
 <strong>virtual\Scripts\activate</strong>
 </li>
 
 
 <li>
-Clone repository:
+Clone repository:</br>
 <strong>git clone https://github.com/KrzysztofLipka/Django_website NLPtool</strong>
 </li>
 
 
 <li>
-change directory to repository folder:
+change directory to repository folder:</br>
 <strong>cd NLPtool</strong>
 </li>
 
 
 <li>
-install requirements from textfile:
+install requirements from textfile:</br>
 <strong>pip install -r requirements.txt</strong>
 </li>
 
 
 <li>
-Activate virtualenv:
+Activate virtualenv:</br>
 <strong>virtual\Scripts\activate</strong>
 </li>
 
 <li>
-Download corpuses for NLTK:
+Download corpuses for NLTK:</br>
 <strong>python -m nltk.downloader wordnet averaged_perceptron_tagger punkt</strong>
 </li>
 
 <li>
-Set flask app (export command for linux):
+Set flask app (export command for linux):</br>
 <strong>set FLASK_APP=__init__.py</strong>
 </li>
 
 <li>
-run app:
+run app:</br>
 <strong>flask run</strong>
 </li>
 
-<li>text_update_models - funkcje uruchamiane po zmianie wartości zmiennej stanu edytora.
-zwraca najpopularniejsze słowa wraz z ich liczebnością.</li>
-<li>folder training zawiera moduły związane z obsługa zbiorów danych, które nastepnie są używane do uczenia maszynowego.</li>  
-<li>folder ml_models zawiera zapisane, wyuczne modele.</li>  
+
 </ol>
 
 <h2>Użyte technologie</h2>
