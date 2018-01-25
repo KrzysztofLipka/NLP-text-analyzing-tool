@@ -8,7 +8,7 @@
 </ul>
 <h2>Instalation (on Windows):</h2> 
 <ol>
-<li>Create a new folder:</br>
+<li>Create a new folder:(using cmd)</br>
 <strong>mkdir project</strong>
 </li>
 
@@ -72,15 +72,11 @@ run app:</br>
 <h2>Użyte technologie</h2>
 <h3>Biblioteki NLP</h3>
 <ul>
-<li> <a href = "https://legacy.spacy.io/docs/">Spacy wersja 1.9</a></li>
-<li> <a href = "http://www.nltk.org/">Nltk 3.2.4</a></li> 
-<li> <a href = "https://radimrehurek.com/gensim/">Gensim 3.0.1</a></li> 
+<li> <a href = "https://legacy.spacy.io/docs/">Spacy wersja</a></li>
+<li> <a href = "http://www.nltk.org/">Nltk</a></li> 
+<li> <a href = "https://radimrehurek.com/gensim/">Gensim</a></li> 
 </ul>
 
-<h3>Interpreter</h3>
-<ul>
-<li>Anaconda 3 dla Python w wersji 3.5</li> 
-</ul>
 
 
 
