@@ -8,16 +8,21 @@
 </ul>
 <h2>Instalation (on Windows):</h2> 
 <ol>
+  
+  
 <li>Create a new folder:(using cmd)</br>
 <strong>mkdir project</strong>
+</li>
+
+<li>Change directory</br>
+<strong>cd project</strong>
 </li>
 
 
 
 
-
 <li>
-creating virtualenv (virtualenv -p <path to python> virtual)</br>
+Creating virtualenv (virtualenv -p <path to python> virtual)</br>
 <strong>virtualenv -p C:\Python36\python.exe virtual</strong>
 </li>
 
@@ -35,13 +40,13 @@ Clone repository:</br>
 
 
 <li>
-change directory to repository folder:</br>
+Change directory to repository folder:</br>
 <strong>cd NLPtool</strong>
 </li>
 
 
 <li>
-install requirements from textfile:</br>
+Install requirements from textfile:</br>
 <strong>pip install -r requirements.txt</strong>
 </li>
 
@@ -62,7 +67,7 @@ Set flask app (export command for linux):</br>
 </li>
 
 <li>
-run app:</br>
+Run app:</br>
 <strong>flask run</strong>
 </li>
 
