@@ -46,28 +46,26 @@ print(len(text_corpus))
 
 #---------------------------------------------------------------
 
-# Import the built-in logging module and configure it so that Word2Vec
-# creates nice output messages
+
 import logging
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',\
     level=logging.INFO)
 
-# Set values for various parameters
-num_features = 300    # Word vector dimensionality
-min_word_count = 40   # Minimum word count
-num_workers = 4       # Number of threads to run in parallel
-context = 10          # Context window size
-downsampling = 1e-3   # Downsample setting for frequent words
 
-# Initialize and train the model (this will take some time)
+num_features = 300
+min_word_count = 40
+num_workers = 4
+context = 10
+downsampling = 1e-3
+
+
 from gensim.models import word2vec
 print ("Training model...")
 model = word2vec.Word2Vec(text_corpus, workers=num_workers, \
             size=num_features, min_count=min_word_count, \
             window=context, sample=downsampling)
 
-# If you don't plan to train the model any further, calling
-# init_sims will make the model much more memory-efficient.
+
 model.init_sims(replace=True)
 
 # wczytywanie modelu -  Word2Vec.load()

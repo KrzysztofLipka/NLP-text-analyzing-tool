@@ -1,25 +1,16 @@
-from flask import Flask, render_template, make_response , jsonify, request, url_for, json
-#from  models import cleaning_text,entity_rec, search_in_model
-#from models2 import word_to_synonims, click_event_processing, from_draftjs_to_text, most_common_words
+from flask import Flask, render_template, jsonify, request
 
-import requests
-
-
-from word_click_models import click_event_processing, word_to_synonims, text_to_speech_part,search_in_model
-from text_update_models import from_draftjs_to_text, classify_text_type,most_common_words,search_ner,text_to_text_count,text_to_ingridients
-
-
+import os
+import sys
 app = Flask(__name__)
 
+from NLPtool.word_click_models import click_event_processing, word_to_synonims, text_to_speech_part,search_in_model
+from NLPtool.text_update_models import from_draftjs_to_text, classify_text_type, search_ner,text_to_text_count,text_to_ingridients
 
-
-
-
-#@app.route('/characterSearching')
 @app.route('/updateEditorState')
 def char_searching():
-    inputText = request.args.get('editor_state', 0)
-    text = from_draftjs_to_text(inputText)
+    input_text = request.args.get('editor_state', 0)
+    text = from_draftjs_to_text(input_text)
     classify_text_type(text)
     most_common = text_to_text_count(text)
     type_of_text  = classify_text_type(text)
@@ -58,8 +49,9 @@ def click_event():
 
 @app.route("/")
 def index():
-    return render_template('index.html')
-
+    path = os.path.dirname(sys.argv[0])
+    print(path)
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

@@ -1,27 +1,22 @@
 import spacy
-from nltk.corpus import stopwords
 import nltk
-nlp = spacy.load('en')
-from bs4 import BeautifulSoup as bs
+#nlp = spacy.load('en')
+import en_core_web_sm
+nlp = en_core_web_sm.load()
 import json
 from nltk import FreqDist,sent_tokenize, word_tokenize, pos_tag
-from nltk.corpus import stopwords, wordnet
 import pickle
 import os
+import os.path
 import  pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer
 import marshal
-#TEXT_CLASSIFICATED = False
-#text_clas = False
 import re
-
 import sys
 
-path = os.path.dirname(sys.argv[0])
-print(path)
-dir = os.path.dirname(__file__)
-#filename = os.path.join(dir,path + '/ml_models/cookbook_vector')
-os.chdir(path + '/ml_models/')
+
+from NLPtool.settings import APP_STATIC
+
+os.chdir(APP_STATIC)
 food_set = "food_set.pkl"
 pkl_name = "food_plot_classificator.pkl"
 vectorizer = "count_vectorizer.pkl"
@@ -52,21 +47,14 @@ def from_draftjs_to_text(state):
     return text
 
 
-
-
-
 def classify_text_type(text):
     text = pd.Series(text)
     text_test = count_vectorizer.transform(text)
     text_type = food_plot_classificator.predict(text_test)
     return text_type
 
-print(classify_text_type('Take two eggs and put theim.'))
 
 def most_common_words(text, number, stopwords):
-    # wyswietla f najpopularniejszych slow w tekscie
-    print(text)
-
     if stopwords is True:
         stop_words = set(stopwords.words("english"))
         res = [w for w in text if w not in stop_words]
@@ -77,14 +65,12 @@ def most_common_words(text, number, stopwords):
 
 
 def text_to_text_count(text):
-    #text = from_draftjs_to_text(state)
-    text = re.sub("[^a-zA-Z]", " ", text)
+    text = re.sub("[^a-zA-Z0-9]", " ", text)
     text = word_tokenize(text)
     word_count = most_common_words(text, number=10,
                                    stopwords=False)
     tab = []
     for i in range(len(word_count)):
-
         tab.append((word_count[i][0],word_count[i][1]))
     return tab
 
@@ -95,9 +81,6 @@ def search_ner(text):
     org_list = [(i.orth_, i.label_) for i in c.ents if i.label_ == "ORG"]
     dates_list = [(i.orth_, i.label_) for i in c.ents if i.label_ == "DATE"]
     return person_list + org_list + dates_list
-
-
-
 
 
 def text_to_ingridients(sample_text):
@@ -112,6 +95,7 @@ def text_to_ingridients(sample_text):
             Number:{<CD><NN.?>}
             Noun:{<NN.?>}
             """
+
             chunkParser = nltk.RegexpParser(pattern)
             chunked = chunkParser.parse(tagged)
             for i in chunked.subtrees():
@@ -124,10 +108,8 @@ def text_to_ingridients(sample_text):
                         ingridients.append((i[0][0],' ' ))
         return ingridients
 
-
     except Exception as e:
         print(str(e))
         return['']
 
-#print(text_to_ingridients('Take two eggs.'))
 
