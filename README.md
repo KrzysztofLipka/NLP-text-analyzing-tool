@@ -77,7 +77,7 @@ Run app:</br>
 
 <h3>NLP libraries</h3>
 <ul>
-<li> <a href = "https://legacy.spacy.io/docs/">Spacy wersja</a></li>
+<li> <a href = "https://spacy.io/">Spacy</a></li>
 <li> <a href = "http://www.nltk.org/">Nltk</a></li> 
 <li> <a href = "https://radimrehurek.com/gensim/">Gensim</a></li> 
 </ul>
