@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 import marshal
 
 """ten modul ma za zadanie stworzenie
-zbioru składnikow ooraz listy wektorow slow
+listy wektorow slow
 ze zbioru danych ingredients v1.csv
 """
 os.chdir('C:\\Users\\Dell\\Desktop\\data')

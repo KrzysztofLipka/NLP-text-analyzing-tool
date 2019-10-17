@@ -9,6 +9,10 @@ import pandas as pd
 from nltk import tree2conlltags
 import pickle
 
+"""
+w tym module znajduje sie tworzenie listy skladnikow
+kulinarnych oraz przyklady do czesci teoretycznej 
+"""
 os.chdir('C:\\Users\\Dell\\Desktop\\data')
 
 x1 = pd.ExcelFile('lista_skladnikow.xlsx')
@@ -106,51 +110,7 @@ def ingr_chunking(sample_text):
     except Exception as e:
         print(str(e))
 
-def ingr_chunking2(sample_text):
-    try:
-        ingridients = []
-        for i in sent_tokenize(sample_text):
-            i = re.sub("[^a-zA-Z0-9/]", " ", i)
-            words = nltk.word_tokenize(i)
-            tagged = nltk.pos_tag(words)
-            #<RB adverb (very, silently).any char except new line? (aby bylo RBR RBS)>*
-            #(match 0 or more repetitions)<VERBS>*<NNP> -zreczownik osobowy+
-            pattern = r"""
-            Adjective:{<JJ><NN.?>}
-            Number:{<CD><NN.?>}
-            Noun:{<NN.?>}
-            """
-            chunkParser = nltk.RegexpParser(pattern)
-            chunked = chunkParser.parse(tagged)
-            #print(chunked)
-            for i in chunked.subtrees():
-                print(i)
-                ingr = i[1][0] # name of ingridient
-                desc = i[0][0] # count of adjective
-                if i.label() =="Adjective" or i.label()=="Number":
-                    print (i[1][0][:-1] in food_list)
-                    if i[1][0] in food_list or i[1][0][:-1] in food_list:
-                        el = i[0][0]+' '+i[1][0]
-                        #el = [j[0] for j in i]
-                        #print(i[0][0]+' '+i[1][0])
 
-                        print(el)
-                        ingridients.append(el)
-
-                if i.label() == "Noun":
-                    if i[0][0] in food_list or i[0][0][:-1] in food_list:
-                        ingridients.append(i[0][0])
-        return ingridients
-
-
-    except Exception as e:
-        print(str(e))
-        return['']
-
-
-print(ingr_chunking2('take two eggs'))
-#print(ingr_chunking(txt2))
-#print('F' in food_list)
 
 example = 'A large white truck appeared around the corner.' \
           ' I just got a new bag and the shape of the food is different.'
@@ -172,6 +132,7 @@ print(chunked)
 
 for i in chunked.subtrees():
     print(i)
+
 
 
 from nltk.corpus import wordnet

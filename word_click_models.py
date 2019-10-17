@@ -1,31 +1,19 @@
-import nltk
-from nltk import word_tokenize
-from nltk.tokenize import PunktSentenceTokenizer, sent_tokenize
-from nltk.corpus.reader import WordListCorpusReader
+
 import os, os.path
-import json
-from bs4 import BeautifulSoup as bs
-import re
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from collections import Counter
+
 from gensim.models import Word2Vec
 from nltk.corpus import wordnet
 import spacy
-nlp = spacy.load('en')
-import marshal
-import pickle
-import  pandas as pd
 
-from nltk import FreqDist,sent_tokenize, word_tokenize, pos_tag
+from nltk import sent_tokenize, word_tokenize, pos_tag
 import re
-import sys
 
-path = os.path.dirname(sys.argv[0])
-print(path)
-dir = os.path.dirname(__file__)
-#filename = os.path.join(dir,path + '/ml_models/cookbook_vector')
-os.chdir(path + '/ml_models/')
+from NLPtool.settings import APP_STATIC
+
+
+import en_core_web_sm
+nlp = en_core_web_sm.load()
+
 
 '''
 Click models for word.
@@ -62,7 +50,7 @@ def click_event_processing(cursor_position, text):
 def word_to_synonims(word):
     synonims_list = []
     if word:
-        if word[-1] == '.':
+        if word[-1] == '.' or word[-1] == ',':
             word = word[:-1]
     for syn in wordnet.synsets(word):
         for l in syn.lemmas():
@@ -73,7 +61,7 @@ def word_to_synonims(word):
 
 
 def text_to_speech_part(sent):
-    sent = re.sub("[^a-zA-Z]", " ", sent)
+    sent = re.sub("[^a-zA-Z0-9]", " ", sent)
     tagged_list = []
     words = word_tokenize(sent)
     tagged = pos_tag(words)
@@ -87,12 +75,13 @@ def text_to_speech_part(sent):
 
 def search_in_model(word,model):
     try:
-        #os.chdir('C:\\Users\\Dell\\Desktop\\data')
-        os.chdir(path + '/ml_models/')
+        if word[-1] == '.' or word[-1] == ',':
+            word = word[:-1]
+        #os.chdir(path + '/ml_models/')
+        os.chdir(APP_STATIC)
         model = Word2Vec.load(model)
         return [i[0] for i in model.most_similar(word.lower())]
-    except Exception as e:
-        print(e)
+    except Exception:
         return ['.']
 
 speech_parts = {
